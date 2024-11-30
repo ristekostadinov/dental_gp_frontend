@@ -4,15 +4,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ErrorStateMatcher } from '@angular/material/core';
 import {
     FormControl,
-    FormGroupDirective,
-    NgForm,
     Validators,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormGroup,
+    FormBuilder
   } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -25,15 +26,50 @@ import {
 
 export class RegisterComponent {
     hide = signal(true);
-    
+    signupForm: FormGroup;
+    constructor(private formBuilder:FormBuilder,
+        private _router: Router,
+        private _auth: AuthService
+    ){
+        this.signupForm = formBuilder.group({
+            firstName: new FormControl('',[Validators.required]),
+            lastName: new FormControl('', [Validators.required]),
+            username: new FormControl('',[Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required, Validators.minLength(8)])
+        });
+    }
     
     clickEvent(event: MouseEvent) {
       this.hide.set(!this.hide());
       event.stopPropagation();
     }
 
-    usernameFormControl = new FormControl('',[Validators.required])
-    emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-    passwordFormControl= new FormControl('', [Validators.required, Validators.minLength(8)]);
-    matcher = new ErrorStateMatcher();
+    get firstName(){
+        return this.signupForm.get('firstName');
+    }
+
+    get lastName(){
+        return this.signupForm.get('lastName');
+    }
+
+    get username(){
+        return this.signupForm.get('username');
+    }
+
+    get email(){
+        return this.signupForm.get('email');
+    }
+
+    get password(){
+        return this.signupForm.get('password');
+    }
+
+    onSubmit() {
+        if (this.signupForm.valid) {
+          this._auth.signUp(this.signupForm.getRawValue()).subscribe(() => {
+            this._router.navigate(['login']);
+          });
+        }
+    }
 }
