@@ -1,15 +1,45 @@
 <main>
-<h2>Register:</h2>
+<h2>Create Account</h2>
+<form>
     <mat-form-field>
         <mat-label>Username: </mat-label>
-        <input matInput>
+        <input matInput type="text" [formControl]="usernameFormControl" [errorStateMatcher]="matcher">
+        @if(usernameFormControl.hasError('required')){
+            <mat-error>Username is <strong>required</strong></mat-error>
+        }
     </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (emailFormControl.hasError('required')) {
+          <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
     <mat-form-field>
-        <mat-label>Email: </mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Password: </mat-label>
-        <input matInput>
-    </mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [formControl]="passwordFormControl" [errorStateMatcher]="matcher" [type]="hide() ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        @if(passwordFormControl.hasError('required')){
+            <mat-error>Password is <strong>required</strong></mat-error>
+        }
+        @if(passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')){
+            <mat-error>Password have to be at least 8 characters</mat-error>
+        }
+      </mat-form-field>
+
+    <button mat-button type="submit" color="primary">Register User</button>
+</form>
 </main>
