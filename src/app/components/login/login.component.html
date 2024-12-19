@@ -1,0 +1,26 @@
+<main>
+    <h2>Login User</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email"
+                   placeholder="Ex. pat@example.com">
+          </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+    
+          <button mat-raised-button color="primary" type="submit" class="w-75" [disabled]="!loginForm.valid"> Login</button>
+          <button routerLink="/register" mat-raised-button color="secondary" type="submit" class="w-75"> Create Account</button>
+    </form>
+    </main>
