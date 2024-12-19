@@ -10,7 +10,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
     //@ts-ignore
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   login(email: string | null | undefined, password: string | null | undefined) {
-    return this.http.post<any>(`${environment.apiUrl}api/v1/auth/signin`, {email: email, password})
+    return this._http.post<any>(`${environment.apiUrl}api/v1/auth/sign_in`, {email: email, password})
       .pipe(tap(() => localStorage.setItem('currentUser', '')),
         map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -39,6 +39,6 @@ export class AuthService {
   }
 
   signUp(rawValue: any) {
-    return this.http.post<any>(`${environment.apiUrl}api/v1/auth/signup`, rawValue);
+    return this._http.post<any>(`${environment.apiUrl}api/v1/auth/sign_up`, rawValue);
   }
 }
