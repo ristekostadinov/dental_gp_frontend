@@ -7,10 +7,11 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { MatInput } from '@angular/material/input';
 import { BroadcastService } from '../../services/broadcast.service';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormField, MatButton, MatLabel, MatIcon, RouterLink, ReactiveFormsModule, MatInput],
+  imports: [MatFormField, MatButton, MatLabel, MatIcon, RouterLink, ReactiveFormsModule, MatInput, MatCardModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
