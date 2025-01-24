@@ -13,7 +13,7 @@ export class UserService {
   constructor(private _httpClient: HttpClient) { }
 
   findAll(): Observable<UserListItem[]>{
-    return this._httpClient.get<UserListItem[]>(`${environment.apiUrl}api/users/all`);
+    return this._httpClient.get<UserListItem[]>(`${environment.apiUrl}api/users`);
   }
 
   findById(id: number): Observable<User>{
