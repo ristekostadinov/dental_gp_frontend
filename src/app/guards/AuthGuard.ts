@@ -7,6 +7,7 @@ import {
   Router,
   RouterStateSnapshot
 } from '@angular/router';
+import {CurrentUser} from '../components/domains/CurrentUser';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
-    if (true) {
+    const user: CurrentUser = JSON.parse(<string>localStorage.getItem('currentUser')) as CurrentUser;
+    if (user.token) {
       return true;
     } else {
       this.router.navigate(['/login']);

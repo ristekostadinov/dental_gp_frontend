@@ -33,7 +33,7 @@ export class LoginComponent {
   onSubmit(){
     this.broadcastService.broadcastLogout();
     const {email, password} = this.loginForm.value;
-    this._auth.login(email, password);
-    this._router.navigate(['']);
+    this._auth.login(email, password)
+      .subscribe((it) => this._router.navigate(['']));
   }
 }

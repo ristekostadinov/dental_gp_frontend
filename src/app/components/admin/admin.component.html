@@ -1,45 +1,24 @@
 <mat-card>
-        <!-- <mat-list>
-            @for(user of users; track $index) {
-                <mat-list-item>
-                        <p style="margin-left:100px ;">{{user.firstName}}</p>
-                        <p style="margin-left: 150px;">{{user.lastName}}</p>
-                        <p>{{user.username}}</p>
-                        @if(user.roles?.values != null){
-                        <mat-list>
-                            @for (role of user.roles; track $index) {
-                                <mat-list-item>
-                                    <p>{{role.name}}</p>
-                                </mat-list-item>
-                            }
-                        </mat-list>
-                        }
-                </mat-list-item>
-            }
-        </mat-list> -->
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-          
             <!-- Position Column -->
             <ng-container matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef> Id </th>
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container>
-          
+
             <!-- Name Column -->
             <ng-container matColumnDef="username">
               <th mat-header-cell *matHeaderCellDef> Username </th>
               <td mat-cell *matCellDef="let element"> {{element.username}} </td>
             </ng-container>
-          
+
             <!-- Weight Column -->
             <ng-container matColumnDef="roles">
               <th mat-header-cell *matHeaderCellDef> Roles </th>
               <td mat-cell *matCellDef="let element"> {{element.roles}} </td>
             </ng-container>
-          
+
             <ng-container matColumnDef="edit/delete">
                 <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
                 <td mat-cell *matCellDef="let element"> <p style="display: flex; flex-direction: row;">

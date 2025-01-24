@@ -15,21 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
-
-
-
 export class AdminComponent implements OnInit{
   displayedColumns: string [] = ['id', 'username', 'roles', 'edit/delete'];
-  //dataSource=ELEMENT_DATA;
   dataSource : UserListItem[] = [];
-
-  users: UserListItem[] = []
 
   constructor(private _userService: UserService ){
   }
 
   ngOnInit() : void{
-    this._userService.findAll().subscribe(it => this.users = it);
-    this.dataSource = this.users;
+    this._userService.findAll()
+      .subscribe(it => this.dataSource = it);
   }
 }
