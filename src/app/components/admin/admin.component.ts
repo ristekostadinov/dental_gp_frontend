@@ -3,21 +3,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table'
-import { UserListItem } from '../domains/UserListItem';
+import { UserDTO } from '../domains/User';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-admin',
-  imports: [MatCardModule, MatInputModule, MatListModule, MatTableModule, MatButtonModule],
+  imports: [MatCardModule, MatInputModule, MatListModule, MatTableModule, MatButtonModule, RouterLink],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit{
   displayedColumns: string [] = ['id', 'username', 'roles', 'edit/delete'];
-  dataSource : UserListItem[] = [];
+  dataSource : UserDTO[] = [];
 
   constructor(private _userService: UserService ){
   }

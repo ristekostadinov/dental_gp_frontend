@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../components/domains/User';
+import { User, UserDTO } from '../components/domains/User';
 import { environment } from '../../envinronments/environment';
 import { Observable } from 'rxjs';
-import { UserListItem } from '../components/domains/UserListItem';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +11,19 @@ export class UserService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  findAll(): Observable<UserListItem[]>{
-    return this._httpClient.get<UserListItem[]>(`${environment.apiUrl}api/users`);
+  findAll(): Observable<UserDTO[]>{
+    return this._httpClient.get<UserDTO[]>(`${environment.apiUrl}api/users`);
   }
 
-  findById(id: number): Observable<User>{
-    return this._httpClient.get<User>(`${environment.apiUrl}api/user/${id}`);
+  findById(id: string): Observable<User>{
+    return this._httpClient.get<User>(`${environment.apiUrl}api/users/${id}`);
   }
 
+  update(id: string, body: User){
+    return this._httpClient.put<User>(`${environment.apiUrl}api/users/${id}`, body);
+  }
 
+  delete(id: string){
+    return this._httpClient.delete<User>(`${environment.apiUrl}api/users/${id}`)
+  }
 }
