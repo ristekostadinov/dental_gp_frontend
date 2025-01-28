@@ -20,7 +20,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
 export class EditUserComponent implements OnInit{
   @Input() id! : string;
   user: User = {};
-  userRoles: Role[] = []; 
+  userRoles: Role[] = [];
   editUserForm: FormGroup= new FormGroup({});
   hide = signal(true);
 
@@ -28,20 +28,24 @@ export class EditUserComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this._userService.findById(this.id).subscribe(val => this.user);
-    this._roleService.findAll().subscribe(response =>  this.userRoles = response);
-    
-    this.editUserForm = this._builder.group({
-        firstName: new FormControl(`${this.user.firstName}`, [Validators.required]),
-        lastName: new FormControl(`${this.user.lastName}`, [Validators.required]),
-        username: new FormControl(`${this.user.username}`, [Validators.required]),
-        email: new FormControl(`${this.user.email}`, [Validators.email, Validators.required]),
-        password: new FormControl(`${this.user.password}`, [Validators.minLength(8), Validators.required]),
-        roles: new FormArray([])
-    });
+    this._userService.findById(this.id)
+      .subscribe(user => {
+        this.user = user;
+        this.editUserForm = this._builder.group({
+          firstName: new FormControl(`${this.user.firstName}`, [Validators.required]),
+          lastName: new FormControl(`${this.user.lastName}`, [Validators.required]),
+          username: new FormControl(`${this.user.username}`, [Validators.required]),
+          email: new FormControl(`${this.user.email}`, [Validators.email, Validators.required]),
+          password: new FormControl(`${this.user.password}`, [Validators.minLength(8), Validators.required]),
+          roles: new FormArray([])
+        });
+      });
+    this._roleService.findAll().subscribe(roles =>  this.userRoles = roles);
+
+
 
   }
-  
+
 
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
