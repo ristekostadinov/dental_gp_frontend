@@ -12,6 +12,6 @@ export class RoleService {
   constructor(private _httpClient: HttpClient) { }
 
   findAll(): Observable<Role[]>{
-    return this._httpClient.get<Role[]>(`${environment.apiUrl}/api/roles`);
+    return this._httpClient.get<Role[]>(`${environment.apiUrl}api/roles`);
   }
 }

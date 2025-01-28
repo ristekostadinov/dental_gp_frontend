@@ -1,5 +1,5 @@
 <main>
-    <h2>Create Account</h2>
+    <h2>Edit User</h2>
     <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
             <mat-label>Frist Name: </mat-label>
@@ -54,18 +54,16 @@
             }
           </mat-form-field>
 
-          <mat-form-field>
-            <span class="example-list-section">
-                @for (role of roles) {
-                  <li>
-                    <mat-checkbox [checked]="subtask.completed" (change)="update($event.checked, i)">
-                      {{subtask.name}}
-                    </mat-checkbox>
-                  </li>
-                }
-              </ul>
+         <mat-form-field>
+          <span>
+            <ul formControlName="roles">
+              @for(role of rolesList; track role.id){
+                <mat-checkbox >{{role.name}} </mat-checkbox>
+              }
+            </ul>
+          </span>
           </mat-form-field>
     
           <button mat-raised-button color="primary" type="submit" class="w-75" [disabled]="!editUserForm.valid">Save</button>
     </form>
-    </main>
+</main>
