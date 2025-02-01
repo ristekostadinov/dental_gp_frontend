@@ -73,7 +73,7 @@ export class EditUserComponent implements OnInit {
       this.userRoles = stream[1];
       if(this.user.roles)
         this.user.roles.forEach(role => {this.selectedRoles.push(role.id)})
-
+        console.log(this.selectedRoles)
       this.editUserForm.patchValue({
         firstName: this.user.firstName,
         lastName: this.user.lastName,
@@ -95,12 +95,13 @@ export class EditUserComponent implements OnInit {
 
   onSubmit(): void {
     const finalRolesId : number [] = [];
-    let values = this.rolesGroup.getRawValue();
-    for(let i=0; i=values.length; i++){
-      if(values[i] != false)
-        finalRolesId.push(parseInt(values[i]));
-    }
+    
     //console.log(finalRolesId);
+
+    this.rolesGroup.value.roles.forEach((el:any)=>{
+      if(typeof(el) === 'number')
+        finalRolesId.push(el);
+    })
     let value = this.editUserForm.getRawValue();
     if(value.firstName != null && value.lastName!=null && value.username!=null && value.email != null && value.password != null){
       let editUserRequest : EditUserRequest = {
@@ -109,12 +110,11 @@ export class EditUserComponent implements OnInit {
         username: value.username,
         email: value.email,
         password: value.password,
-        rolesId: []
+        rolesId: finalRolesId
       }
       this._userService.update(this.id, editUserRequest).subscribe((it)=>{
         this._router.navigate(['admin-panel']);
       });
-      console.log(editUserRequest)
     }
   }
   getRole(i: number){

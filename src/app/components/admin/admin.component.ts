@@ -7,7 +7,7 @@ import { UserDTO } from '../domains/User';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 
 @Component({
@@ -20,11 +20,17 @@ export class AdminComponent implements OnInit{
   displayedColumns: string [] = ['id', 'username', 'roles', 'edit/delete'];
   dataSource : UserDTO[] = [];
 
-  constructor(private _userService: UserService ){
+  constructor(private _userService: UserService, private _router: Router ){
   }
 
   ngOnInit() : void{
     this._userService.findAll()
       .subscribe(it => this.dataSource = it);
+  }
+
+  delete(id: string){
+    this._userService.delete(id).subscribe(()=>{
+      this._router.navigate(['admin-panel']);
+    })
   }
 }
