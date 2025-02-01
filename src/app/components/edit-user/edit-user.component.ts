@@ -53,7 +53,9 @@ export class EditUserComponent implements OnInit {
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.minLength(8), Validators.required]],
   });
-  rolesGroup: FormGroup = new FormGroup({});
+  rolesGroup: FormGroup = new FormGroup({
+    roles: new FormArray([])
+  });
 
   hide = signal(true);
 
