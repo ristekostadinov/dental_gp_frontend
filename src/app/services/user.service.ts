@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User, UserDTO } from '../components/domains/User';
+import { EditUserRequest, User, UserDTO } from '../components/domains/User';
 import { environment } from '../../envinronments/environment';
 import { Observable } from 'rxjs';
 
@@ -19,8 +19,8 @@ export class UserService {
     return this._httpClient.get<User>(`${environment.apiUrl}api/users/${id}`);
   }
 
-  update(id: string, body: User){
-    return this._httpClient.put<User>(`${environment.apiUrl}api/users/${id}`, body);
+  update(id: string, body: EditUserRequest){
+    return this._httpClient.put<EditUserRequest>(`${environment.apiUrl}api/users/${id}`, body);
   }
 
   delete(id: string){

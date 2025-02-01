@@ -1,69 +1,73 @@
 <main>
-    <h2>Edit User</h2>
-    <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-            <mat-label>First Name: </mat-label>
-            <input matInput type="text" formControlName="firstName">
-            @if(firstName?.hasError('required')){
-                <mat-error>First name is <strong>required</strong></mat-error>
-            }
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Last name: </mat-label>
-            <input matInput type="text" formControlName="lastName">
-            @if(lastName?.hasError('required')){
-                <mat-error>Last name is <strong>required</strong></mat-error>
-            }
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Username: </mat-label>
-            <input matInput type="text" formControlName="username">
-            @if(username?.hasError('required')){
-                <mat-error>Username is <strong>required</strong></mat-error>
-            }
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="email"
-                   placeholder="Ex. pat@example.com">
-            <mat-hint>Errors appear instantly!</mat-hint>
-            @if (email?.hasError('email') && !email?.hasError('required')) {
-              <mat-error>Please enter a valid email address</mat-error>
-            }
-            @if (email?.hasError('required')) {
-              <mat-error>Email is <strong>required</strong></mat-error>
-            }
-          </mat-form-field>
-        <mat-form-field>
-            <mat-label>Enter your password</mat-label>
-            <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
-            <button
-              mat-icon-button
-              matSuffix
-              (click)="clickEvent($event)"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide()"
-            >
-              <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            @if(password?.hasError('required')){
-                <mat-error>Password is <strong>required</strong></mat-error>
-            }
-            @if(password?.hasError('minlength') && !password?.hasError('required')){
-                <mat-error>Password have to be at least 8 characters</mat-error>
-            }
-          </mat-form-field>
+  <h2>Edit User</h2>
+  <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Frist Name: </mat-label>
+      <input matInput type="text" formControlName="firstName">
+      @if(firstName?.hasError('required')){
+      <mat-error>First name is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last name: </mat-label>
+      <input matInput type="text" formControlName="lastName">
+      @if(lastName?.hasError('required')){
+      <mat-error>Last name is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username: </mat-label>
+      <input matInput type="text" formControlName="username">
+      @if(username?.hasError('required')){
+      <mat-error>Username is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      @if (email?.hasError('email') && !email?.hasError('required')) {
+      <mat-error>Please enter a valid email address</mat-error>
+      }
+      @if (email?.hasError('required')) {
+      <mat-error>Email is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
+      <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()">
+        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      @if(password?.hasError('required')){
+      <mat-error>Password is <strong>required</strong></mat-error>
+      }
+      @if(password?.hasError('minlength') && !password?.hasError('required')){
+      <mat-error>Password have to be at least 8 characters</mat-error>
+      }
+    </mat-form-field>
 
-         <mat-form-field>
-          <span>
-            <ul formControlName="roles">
-              @for(role of rolesList; track role.id){
-                <mat-checkbox >{{role.name}} </mat-checkbox>
-              }
-            </ul>
-          </span>
-          </mat-form-field>
+    <section>
+      <div [formGroup]="rolesGroup">
+        <div *ngIf="userRoles && userRoles.length" formArrayName="roles"> 
+          <mat-label>Roles:</mat-label>
+          <div *ngFor="let role of roles.controls; index as i">
+             <mat-checkbox 
+             (click)="onClick($event)" 
+             [checked]="isChecked(role)" 
+             type="checkbox" 
+             name="role" 
+             [formControlName]="i" 
+             [value]="getRoleName(i)">
+             {{getRoleName(i)}}
+            </mat-checkbox>
+          </div>
+          
+        </div>
+      </div>
+    </section>
 
-          <button mat-raised-button color="primary" type="submit" class="w-75" [disabled]="!editUserForm.valid">Save</button>
-    </form>
+    <button mat-raised-button color="primary" type="submit" class="w-75" [disabled]="!editUserForm.valid">Save</button>
+  </form>
 </main>
