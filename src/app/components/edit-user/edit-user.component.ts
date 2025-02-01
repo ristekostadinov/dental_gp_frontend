@@ -102,7 +102,7 @@ export class EditUserComponent implements OnInit {
     }
     //console.log(finalRolesId);
     let value = this.editUserForm.getRawValue();
-    if(value.firstName != null && value.lastName !=null && value.username!=null && value.email != null && value.password != null){
+    if(value.firstName != null && value.lastName!=null && value.username!=null && value.email != null && value.password != null){
       let editUserRequest : EditUserRequest = {
         firstName: value.firstName,
         lastName: value.lastName,
