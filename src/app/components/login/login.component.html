@@ -1,4 +1,4 @@
-<main>
+<mat-card>
     <h2>Login User</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field class="example-full-width">
@@ -23,4 +23,4 @@
           <button mat-raised-button color="primary" type="submit" class="w-75" [disabled]="!loginForm.valid"> Login</button>
           <button routerLink="/register" mat-raised-button color="secondary" type="submit" class="w-75"> Create Account</button>
     </form>
-    </main>
+</mat-card>

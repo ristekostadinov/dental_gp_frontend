@@ -22,7 +22,9 @@ export class AuthService {
 
   login(email: string | null | undefined, password: string | null | undefined) {
     return this._http.post<any>(`${environment.apiUrl}api/v1/auth/sign_in`, {email: email, password})
-      .pipe(tap(() => localStorage.setItem('currentUser', '')),
+      .pipe(tap(() => {
+          localStorage.setItem('currentUser', '');
+        }),
         map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));

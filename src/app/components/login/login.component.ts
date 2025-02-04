@@ -7,10 +7,11 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { MatInput } from '@angular/material/input';
 import { BroadcastService } from '../../services/broadcast.service';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormField, MatButton, MatLabel, MatIcon, RouterLink, ReactiveFormsModule, MatInput],
+  imports: [MatFormField, MatButton, MatLabel, MatIcon, RouterLink, ReactiveFormsModule, MatInput, MatCardModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -32,7 +33,7 @@ export class LoginComponent {
   onSubmit(){
     this.broadcastService.broadcastLogout();
     const {email, password} = this.loginForm.value;
-    this._auth.login(email, password);
-    this._router.navigate(['']);
+    this._auth.login(email, password)
+      .subscribe((it) => this._router.navigate(['']));
   }
 }

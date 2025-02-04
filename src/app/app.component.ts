@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { NavComponent } from './components/shared/nav/nav.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
     selector: 'app-root',
-    imports: [NavComponent],
+    imports: [RouterOutlet],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'dental_gp_frontend';
 }
