@@ -54,7 +54,6 @@
           <mat-label>Roles:</mat-label>
           <div *ngFor="let role of roles.controls; index as i">
              <mat-checkbox 
-             (click)="onClick($event)" 
              [checked]="isChecked(role)" 
              type="checkbox" 
              name="role" 

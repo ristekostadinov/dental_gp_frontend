@@ -23,6 +23,18 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { forkJoin } from 'rxjs';
 import { Router} from '@angular/router';
 
+interface IEditUserForm{
+  firstName: FormControl<string>;
+  lastName: FormControl<string>;
+  username: FormControl<string>;
+  email: FormControl<string>;
+  password: FormControl<string>;
+}
+
+interface IEditRoles{
+  roles: FormArray<FormControl<number|null>>;
+}
+
 @Component({
   selector: 'app-edit-user',
   imports: [
@@ -46,15 +58,16 @@ export class EditUserComponent implements OnInit {
   userRoles: Role[] = [];
   selectedRoles: number[] = [];
 
-  editUserForm = this._builder.group({
+  editUserForm: FormGroup<IEditUserForm> = this._builder.nonNullable.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
     username: ['', [Validators.required]],
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.minLength(8), Validators.required]],
   });
-  rolesGroup: FormGroup = new FormGroup({
-    roles: new FormArray([])
+  
+  rolesGroup: FormGroup<IEditRoles> = this._builder.nonNullable.group({
+    roles: new FormArray<FormControl<number|null>>([])
   });
 
   hide = signal(true);
@@ -73,9 +86,11 @@ export class EditUserComponent implements OnInit {
     ]).subscribe((stream) => {
       this.user = stream[0];
       this.userRoles = stream[1];
-      if(this.user.roles)
+
+      if(this.user.roles){
         this.user.roles.forEach(role => {this.selectedRoles.push(role.id)})
-        console.log(this.selectedRoles)
+      }
+        
       this.editUserForm.patchValue({
         firstName: this.user.firstName,
         lastName: this.user.lastName,
@@ -84,7 +99,7 @@ export class EditUserComponent implements OnInit {
         password: this.user.password
       });
 
-      this.rolesGroup = this._builder.group({
+      this.rolesGroup = this._builder.nonNullable.group({
         roles: this.buildRoles()
       })
     });
@@ -93,17 +108,18 @@ export class EditUserComponent implements OnInit {
   clickEvent(event: MouseEvent) {
     this.hide.set(!this.hide());
     event.stopPropagation();
+    event.preventDefault();
   }
 
   onSubmit(): void {
     const finalRolesId : number [] = [];
-    
-    //console.log(finalRolesId);
 
-    this.rolesGroup.value.roles.forEach((el:any)=>{
-      if(typeof(el) === 'number')
-        finalRolesId.push(el);
-    })
+   this.rolesGroup.value.roles?.forEach((el) => {
+    if(typeof(el) === 'number')
+      finalRolesId.push(el);
+   })
+
+    console.log(finalRolesId);
     let value = this.editUserForm.getRawValue();
     if(value.firstName != null && value.lastName!=null && value.username!=null && value.email != null && value.password != null){
       let editUserRequest : EditUserRequest = {
@@ -127,10 +143,15 @@ export class EditUserComponent implements OnInit {
   }
 
   isChecked(role : AbstractControl){
-   return this.selectedRoles.includes(role.value);
+    if(typeof(role.value) === 'number'){
+      if (this.selectedRoles.includes(role.value))
+        console.log(role.value);
+        return 'checked';
+    }
+   return 'unchecked'
   }
 
-  buildRoles(){
+  buildRoles(): FormArray<FormControl<number|null>>{
     const arr = this.userRoles.map(role => {
       return this._builder.control(role.id)
     })
@@ -164,10 +185,5 @@ export class EditUserComponent implements OnInit {
 
   get rolesList() {
     return this.userRoles;
-  }
-
-
-  onClick(e: any){
-    e.target.checked=!e.target.checked;
   }
 }
