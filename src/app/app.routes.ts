@@ -32,7 +32,7 @@ export const routes: Routes = [
         component: CreatePatientComponent
       },
       {
-        path: 'edit-patient',
+        path: 'patient-list/edit-patient/:id',
         component: EditPatientComponent
       }
     ]
