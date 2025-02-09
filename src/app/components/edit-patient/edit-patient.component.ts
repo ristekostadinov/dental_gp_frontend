@@ -33,6 +33,7 @@ export class EditPatientComponent implements OnInit {
   @Input() id!: string;
   patient!: Patient;
   patientInsurance: boolean[] = [true, false];
+
   editPatientForm: FormGroup<IPatientForm> =
     this._formBuilder.nonNullable.group({
       firstName: ['', [Validators.required]],
@@ -107,7 +108,6 @@ export class EditPatientComponent implements OnInit {
           insurance: this.convertToBolean(formValue.insurance),
         };
 
-        console.log(patientRequest);
         this._patientService.edit(this.id, patientRequest).subscribe(() => {
           this._router.navigate(['patient-list']);
         });
