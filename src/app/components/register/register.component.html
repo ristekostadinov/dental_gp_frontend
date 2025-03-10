@@ -1,4 +1,4 @@
-<main>
+<div class="container">
 <h2>Create Account</h2>
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
@@ -56,4 +56,4 @@
 
       <button mat-raised-button color="primary" type="submit" class="w-75" [disabled]="!signupForm.valid"> Sign Up</button>
 </form>
-</main>
+</div>
