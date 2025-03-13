@@ -8,6 +8,9 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { CreatePatientComponent } from './components/create-patient/create-patient.component';
 import { EditPatientComponent } from './components/edit-patient/edit-patient.component';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
+import { EditCategoryComponent } from './components/edit-category/edit-category.component';
 
 export const routes: Routes = [
   {
@@ -17,24 +20,37 @@ export const routes: Routes = [
     children: [
       {
         path: 'admin-panel',
-        component: AdminComponent
+        component: AdminComponent,
       },
       {
         path: 'admin-panel/edit-user/:id',
-        component: EditUserComponent
+        component: EditUserComponent,
       },
       {
         path: 'patient-list',
-        component: PatientListComponent
+        component: PatientListComponent,
       },
       {
         path: 'create-patient',
-        component: CreatePatientComponent
+        component: CreatePatientComponent,
       },
       {
         path: 'patient-list/edit-patient/:id',
-        component: EditPatientComponent
-      }
+        component: EditPatientComponent,
+      },
+      {
+        path: 'category-list',
+        component: CategoriesListComponent,
+      },
+      {
+        path: 'create-category',
+        component: CreateCategoryComponent,
+      },
+      {
+        path: 'category-list/edit-category/:id',
+        component: EditCategoryComponent,
+      },
+
     ]
   },
   {

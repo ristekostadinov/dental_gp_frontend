@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Insert Category</h2>
+  <form [formGroup]="createCategoryForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Category Name: </mat-label>
+      <input matInput type="text" formControlName="name" />
+      @if(name?.hasError('required')){
+      <mat-error>Category name is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+<div class="row  justify-content-center">
+    <div class="col">
+        <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="w-75"
+        [disabled]="!createCategoryForm.valid"
+      >
+        Save Category
+      </button>
+    </div>
+
+</div>
+
+  </form>
+</div>
