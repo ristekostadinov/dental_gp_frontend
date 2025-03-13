@@ -33,6 +33,9 @@ export class LoginComponent {
   onSubmit(){
     this.broadcastService.broadcastLogout();
     const {email, password} = this.loginForm.value;
+    console.log(email
+      , password
+    );
     this._auth.login(email, password)
       .subscribe((it) => this._router.navigate(['']));
   }

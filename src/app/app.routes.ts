@@ -21,42 +21,34 @@ export const routes: Routes = [
       {
         path: 'admin-panel',
         component: AdminComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'admin-panel/edit-user/:id',
         component: EditUserComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'patient-list',
         component: PatientListComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'create-patient',
         component: CreatePatientComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'patient-list/edit-patient/:id',
         component: EditPatientComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'categories-list',
         component: CategoriesListComponent,
-        canActivate: [AuthGuard]
       },
       {
-        path: 'categories-list/create-category',
+        path: 'create-category',
         component: CreateCategoryComponent,
-        canActivate: [AuthGuard]
       },
       {
         path: 'edit-category/:id',
         component: EditCategoryComponent,
-        canActivate: [AuthGuard]
       },
 
     ]
