@@ -39,7 +39,7 @@ export const routes: Routes = [
         component: EditPatientComponent,
       },
       {
-        path: 'categories-list',
+        path: 'category-list',
         component: CategoriesListComponent,
       },
       {
@@ -47,7 +47,7 @@ export const routes: Routes = [
         component: CreateCategoryComponent,
       },
       {
-        path: 'edit-category/:id',
+        path: 'category-list/edit-category/:id',
         component: EditCategoryComponent,
       },
 

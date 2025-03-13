@@ -11,26 +11,26 @@
       <!-- Name Column -->
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef>First Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        <td mat-cell *matCellDef="let patient">{{ patient.firstName }}</td>
       </ng-container>
       
       <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef>Last Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+        <td mat-cell *matCellDef="let patient">{{  patient.lastName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="insurance">
         <th mat-header-cell *matHeaderCellDef>Insurance</th>
-        <td mat-cell *matCellDef="let element">{{ element.insurance }}</td>
+        <td mat-cell *matCellDef="let patient">{{  patient.insurance }}</td>
       </ng-container>
  
   
       <ng-container matColumnDef="edit/delete">
         <th mat-header-cell *matHeaderCellDef>Edit/Delete</th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let patient">
           <p style="display: flex; flex-direction: row">
-            <button (click)="delete(element.id)" mat-button style="margin-right: 20px">Delete</button>
-            <a mat-raised-button color="primary" routerLink="edit-patient/{{ element.id }}">Edit</a>
+            <button (click)="delete(patient.id)" mat-button style="margin-right: 20px">Delete</button>
+            <a mat-raised-button color="primary" routerLink="edit-patient/{{patient.id}}">Edit</a>
           </p>
         </td>
       </ng-container>

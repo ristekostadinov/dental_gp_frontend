@@ -5,14 +5,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CategoryService } from '../../services/category.service';
 import { CategoryDTO } from '../domains/Category';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categories-list',
   imports: [
+    RouterLink,
     MatTableModule,
     MatPaginatorModule,
     MatButtonModule,
@@ -34,7 +34,6 @@ export class CategoriesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCategories();
-    console.log(this.categories)
   }
 
   loadCategories(){
@@ -49,6 +48,12 @@ export class CategoriesListComponent implements OnInit {
     this.pageIndex = e.pageIndex;
     this.pageSize = e.pageSize;
     this.loadCategories();
+  }
+
+  deleteCategory(id: string){
+    this._categoryService.delete(id).subscribe(response =>{
+      this.loadCategories();
+    })
   }
 
 }
