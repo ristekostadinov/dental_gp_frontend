@@ -11,6 +11,8 @@ import { EditPatientComponent } from './components/edit-patient/edit-patient.com
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { DentalServiceListComponent } from './components/dental-service-list/dental-service-list.component';
+import { CreateDentalServiceComponent } from './components/create-dental-service/create-dental-service.component';
 
 export const routes: Routes = [
   {
@@ -50,6 +52,18 @@ export const routes: Routes = [
         path: 'category-list/edit-category/:id',
         component: EditCategoryComponent,
       },
+      {
+        path: 'dental-service-list',
+        component: DentalServiceListComponent,
+      },
+      {
+        path: 'create-dental-service',
+        component: CreateDentalServiceComponent,
+      },
+      {
+        path: 'dental-service-list/edit-dental-service/:id',
+        component: EditCategoryComponent,
+      }
 
     ]
   },
