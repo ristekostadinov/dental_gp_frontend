@@ -13,6 +13,7 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
 import { DentalServiceListComponent } from './components/dental-service-list/dental-service-list.component';
 import { CreateDentalServiceComponent } from './components/create-dental-service/create-dental-service.component';
+import { EditDentalServiceComponent } from './components/edit-dental-service/edit-dental-service.component';
 
 export const routes: Routes = [
   {
@@ -62,7 +63,7 @@ export const routes: Routes = [
       },
       {
         path: 'dental-service-list/edit-dental-service/:id',
-        component: EditCategoryComponent,
+        component: EditDentalServiceComponent,
       }
 
     ]
