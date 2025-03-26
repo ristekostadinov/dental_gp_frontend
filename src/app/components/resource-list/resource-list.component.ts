@@ -47,6 +47,7 @@ export class ResourceListComponent implements OnInit {
       .subscribe((response) => {
         this.resources = response.content;
         this.totalElements = response.totalElements;
+        console.log(this.resources);
       });
   }
   
