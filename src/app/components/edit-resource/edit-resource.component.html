@@ -1,0 +1,43 @@
+<div class="container">
+    <h2>Edit Resource Information</h2>
+    <form [formGroup]="editResourceForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Name: </mat-label>
+        <input matInput type="text" formControlName="name" />
+        @if(name?.hasError('required')){
+        <mat-error>Resource name is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Address: </mat-label>
+        <input matInput type="text" formControlName="address" /> 
+        @if(address?.hasError('required')){
+        <mat-error>Resource address is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description: </mat-label>
+        <input matInput type="text" formControlName="description" />
+        @if(description?.hasError('required')){
+        <mat-error>Resource description is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+  <div class="row  justify-content-center">
+      <div class="col">
+          <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="w-75"
+          [disabled]="!editResourceForm.valid"
+        >
+          Save Service
+        </button>
+      </div>
+  
+  </div>
+  
+    </form>
+  </div>

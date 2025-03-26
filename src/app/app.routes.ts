@@ -14,6 +14,9 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
 import { DentalServiceListComponent } from './components/dental-service-list/dental-service-list.component';
 import { CreateDentalServiceComponent } from './components/create-dental-service/create-dental-service.component';
 import { EditDentalServiceComponent } from './components/edit-dental-service/edit-dental-service.component';
+import { ResourceListComponent } from './components/resource-list/resource-list.component';
+import { CreateResourceComponent } from './components/create-resource/create-resource.component';
+import { EditResourceComponent } from './components/edit-resource/edit-resource.component';
 
 export const routes: Routes = [
   {
@@ -64,6 +67,18 @@ export const routes: Routes = [
       {
         path: 'dental-service-list/edit-dental-service/:id',
         component: EditDentalServiceComponent,
+      },
+      {
+        path:'resource-list',
+        component: ResourceListComponent
+      },
+      {
+        path: 'create-resource',
+        component: CreateResourceComponent,
+      },
+      {
+        path: 'resource-list/edit-resource/:id',
+        component: EditResourceComponent
       }
 
     ]
