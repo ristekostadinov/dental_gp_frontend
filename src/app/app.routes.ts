@@ -19,6 +19,7 @@ import { CreateResourceComponent } from './components/create-resource/create-res
 import { EditResourceComponent } from './components/edit-resource/edit-resource.component';
 import { LocationListComponent } from './components/location-list/location-list.component';
 import { LocationPreviewComponent } from './components/location-preview/location-preview.component';
+import { AppointmentCalendarComponent } from './components/appointment-calendar/appointment-calendar.component';
 
 export const routes: Routes = [
   {
@@ -89,6 +90,10 @@ export const routes: Routes = [
       {
         path: 'location-list/location/:id',
         component: LocationPreviewComponent
+      },
+      {
+        path: 'appointment-calendar',
+        component: AppointmentCalendarComponent
       }
 
     ]
