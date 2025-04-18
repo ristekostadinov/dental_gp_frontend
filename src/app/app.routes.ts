@@ -17,6 +17,8 @@ import { EditDentalServiceComponent } from './components/edit-dental-service/edi
 import { ResourceListComponent } from './components/resource-list/resource-list.component';
 import { CreateResourceComponent } from './components/create-resource/create-resource.component';
 import { EditResourceComponent } from './components/edit-resource/edit-resource.component';
+import { LocationListComponent } from './components/location-list/location-list.component';
+import { LocationPreviewComponent } from './components/location-preview/location-preview.component';
 
 export const routes: Routes = [
   {
@@ -79,6 +81,14 @@ export const routes: Routes = [
       {
         path: 'resource-list/edit-resource/:id',
         component: EditResourceComponent
+      },
+      {
+        path: 'location-list',
+        component: LocationListComponent
+      }, 
+      {
+        path: 'location-list/location/:id',
+        component: LocationPreviewComponent
       }
 
     ]
