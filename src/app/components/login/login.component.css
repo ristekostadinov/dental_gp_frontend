@@ -5,3 +5,25 @@ form{
   mat-form-field{
     display: inline;
   }
+
+  .auth-page{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:70vh;
+    padding:24px;
+    background:#f5f7fb"
+  }
+
+  .auth-card{
+    width: 100%; 
+    max-width: 420px
+  }
+
+ .auth-buttons{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 20px;
+  margin-top:8px
+ } 

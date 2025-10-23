@@ -21,7 +21,12 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span>dental_gp_frontend</span>
+      <span>Admin Application</span>
+
+            <span class="spacer" style="flex:1 1 auto"></span>
+      <button mat-icon-button aria-label="Logout" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
     </mat-toolbar>
     <!-- Add Content Here -->
      <router-outlet></router-outlet>
