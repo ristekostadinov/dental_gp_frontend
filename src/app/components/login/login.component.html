@@ -20,7 +20,7 @@
         }
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Enter your password</mat-label>
+        <mat-label>Password</mat-label>
         <input
           matInput
           formControlName="password"
@@ -45,7 +45,7 @@
       </mat-form-field>
       <div class="auth-buttons">
         <button
-          mat-raised-button
+          mat-stroked-button
           color="primary"
           type="submit"
           class="w-75"
@@ -56,8 +56,8 @@
 
         <button
           routerLink="/register"
-          mat-raised-button
-          color="secondary"
+          mat-flat-button
+          class="btn-tertiary"
           type="submit"
           class="w-75"
         >

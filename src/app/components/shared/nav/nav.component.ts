@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
@@ -14,6 +14,7 @@ import { AuthService } from '../../../services/auth.service';
 interface Page {
   name: string;
   route: string;
+  icon?: string;
 }
 @Component({
   selector: 'app-nav',
@@ -31,24 +32,40 @@ interface Page {
     RouterLink,
   ],
 })
-export class NavComponent {
-  constructor(private router:Router, private authService:AuthService) {
-
+export class NavComponent implements OnInit {
+  user: any;
+  constructor(private router: Router, private authService: AuthService) {}
+  ngOnInit(): void {
+    try{
+      this.user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      console.log("NavComponent - currentUser:", this.user);
+    }
+    catch(error){
+      console.error("NavComponent - Error parsing currentUser from localStorage:", error);
+      this.user = null;
+    }
+    
   }
   private breakpointObserver = inject(BreakpointObserver);
-  pages: Page[] = [
-    { name: 'Admin Panel', route: '/admin-panel' },
-    { name: 'Patient List', route: '/patient-list' },
-    { name: 'Dental Service List', route: '/dental-service-list' },
-    { name: 'Resource List', route: '/resource-list' },
-    { name: 'Location List', route: '/location-list' },
+  pages: Page[] =  [
+    { name: 'Manage Users', route: '/admin-panel', icon: 'admin_panel_settings' },
+    { name: 'Patients', route: '/patient-list', icon: 'person' },
+    { name: 'Services', route: '/dental-service-list', icon: 'medical_services' },
+    { name: 'Locations', route: '/location-list', icon: 'place' },
+    { name: 'Dental Providers', route: '/resource-list', icon: 'group' },
   ];
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay()
     );
+
+  get currentUser() {
+    return this.user;
+  }
+
   logout() {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['/login']);

@@ -12,12 +12,13 @@ form{
     justify-content:center;
     min-height:70vh;
     padding:24px;
-    background:#f5f7fb"
+    /*background-color:#f5f7fb; */
   }
 
   .auth-card{
     width: 100%; 
-    max-width: 420px
+    max-width: 420px;
+    padding:24px;
   }
 
  .auth-buttons{
@@ -25,5 +26,11 @@ form{
   justify-content:space-between;
   align-items:center;
   gap: 20px;
-  margin-top:8px
+  margin-top:8px;
  } 
+
+ :host{
+   display: block;
+  height: 100vh;        /* ensures the background fills the screen */
+  background-color: lightblue; /* or blue if you want that */
+ }

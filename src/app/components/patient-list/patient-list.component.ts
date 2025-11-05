@@ -7,10 +7,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-patient-list',
-  imports: [RouterLink, MatCardModule, MatTableModule, MatButtonModule, MatListModule, MatInputModule],
+  imports: [RouterLink, MatCardModule, MatTableModule, MatButtonModule, MatListModule, MatInputModule, MatIconModule],
   templateUrl: './patient-list.component.html',
   styleUrl: './patient-list.component.css'
 })

@@ -1,42 +1,59 @@
-<mat-card>
-    <a routerLink="/create-patient" mat-button>Create New Patient</a>
-    <h2>Patients list: </h2>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- Position Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="firstName">
-        <th mat-header-cell *matHeaderCellDef>First Name</th>
-        <td mat-cell *matCellDef="let patient">{{ patient.firstName }}</td>
-      </ng-container>
-      
-      <ng-container matColumnDef="lastName">
-        <th mat-header-cell *matHeaderCellDef>Last Name</th>
-        <td mat-cell *matCellDef="let patient">{{  patient.lastName }}</td>
-      </ng-container>
+<div class="container">
+  <mat-card>
+    <mat-card-header style="display: flex; flex-direction: row; justify-content: center;">
+      <a routerLink="/create-patient" mat-flat-button
+        ><mat-icon>add</mat-icon>Create New Patient</a
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <h2>Patients list:</h2>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="insurance">
-        <th mat-header-cell *matHeaderCellDef>Insurance</th>
-        <td mat-cell *matCellDef="let patient">{{  patient.insurance }}</td>
-      </ng-container>
- 
-  
-      <ng-container matColumnDef="edit/delete">
-        <th mat-header-cell *matHeaderCellDef>Edit/Delete</th>
-        <td mat-cell *matCellDef="let patient">
-          <p style="display: flex; flex-direction: row">
-            <button (click)="delete(patient.id)" mat-button style="margin-right: 20px">Delete</button>
-            <a mat-raised-button color="primary" routerLink="edit-patient/{{patient.id}}">Edit</a>
-          </p>
-        </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef>First Name</th>
+          <td mat-cell *matCellDef="let patient">{{ patient.firstName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>Last Name</th>
+          <td mat-cell *matCellDef="let patient">{{ patient.lastName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="insurance">
+          <th mat-header-cell *matHeaderCellDef>Insurance</th>
+          <td mat-cell *matCellDef="let patient">{{ patient.insurance }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit/delete">
+          <th mat-header-cell *matHeaderCellDef>Edit/Delete</th>
+          <td mat-cell *matCellDef="let patient">
+            <p style="display: flex; flex-direction: row; margin-top: 20px;">
+              <button
+                (click)="delete(patient.id)"
+                mat-flat-button
+                style="margin-right: 20px; background-color: maroon;"
+              >
+                Delete
+              </button>
+              <a
+                mat-flat-button
+                color="primary"
+                routerLink="edit-patient/{{ patient.id }}"
+                >Edit</a
+              >
+            </p>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
   </mat-card>
-  
+</div>

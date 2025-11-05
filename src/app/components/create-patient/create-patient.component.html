@@ -33,25 +33,52 @@
 
     <mat-form-field>
       <mat-label>Phone number: </mat-label>
-      <input matInput type="text" formControlName="phoneNumber" placeholder="Ex. (00)-000-000 or 000-000"/>
+      <input
+        matInput
+        type="text"
+        formControlName="phoneNumber"
+        placeholder="Ex. (00)-000-000 or 000-000"
+      />
       @if(phoneNumber?.hasError('required')){
-        <mat-error>Phone number is <strong>required</strong></mat-error>
-      }
-      @if(phoneNumber?.hasError('pattern')){
-        <mat-error>Phone number format <strong> is incorrect</strong></mat-error>
+      <mat-error>Phone number is <strong>required</strong></mat-error>
+      } @if(phoneNumber?.hasError('pattern')){
+      <mat-error>Phone number format <strong> is incorrect</strong></mat-error>
       }
     </mat-form-field>
 
     <mat-form-field>
-        <mat-label>Insurance: </mat-label>
-        <mat-select formControlName="insurance">
-            @for(insurance of patientInsurance; track insurance){
-                <mat-option value="{{insurance}}">{{insurance}}</mat-option>
-            }
-        </mat-select>
-        @if(insurance?.hasError('required')){
-            <mat-error>Insurance is <strong>required</strong></mat-error>
+      <mat-label>Insurance: </mat-label>
+      <mat-select formControlName="insurance">
+        @for(insurance of patientInsurance; track insurance){
+        <mat-option value="{{ insurance }}">{{ insurance }}</mat-option>
         }
+      </mat-select>
+      @if(insurance?.hasError('required')){
+      <mat-error>Insurance is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        [type]="hide() ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide()"
+      >
+        <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      @if(password?.hasError('required')){
+      <mat-error>Password is <strong>required</strong></mat-error>
+      } @if(password?.hasError('minlength') && !password?.hasError('required')){
+      <mat-error>Password have to be at least 8 characters</mat-error>
+      }
     </mat-form-field>
 
     <button

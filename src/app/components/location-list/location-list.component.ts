@@ -47,4 +47,11 @@ export class LocationListComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.loadLoadLocations();
   }
+
+  deleteLocation(id: string) {
+    // this._locationService.deleteById(id).subscribe(() => {
+    //   this.loadLoadLocations();
+    // });
+  }
+
 }

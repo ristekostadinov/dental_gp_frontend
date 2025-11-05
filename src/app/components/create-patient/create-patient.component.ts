@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormsModule,
@@ -33,6 +33,7 @@ import { Router } from '@angular/router';
   styleUrl: './create-patient.component.css',
 })
 export class CreatePatientComponent implements OnInit {
+  hide = signal(true);
   createPatientForm!: FormGroup<IPatientForm>;
   patientInsurance: boolean[] = [true, false];
   constructor(
@@ -50,7 +51,13 @@ export class CreatePatientComponent implements OnInit {
         [Validators.required, Validators.pattern('^[- +()0-9]+$')],
       ],
       insurance: [''],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
+  }
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
   }
 
   convertToBolean(param: string): boolean {
@@ -66,7 +73,8 @@ export class CreatePatientComponent implements OnInit {
         formValue.lastName != undefined &&
         formValue.email != undefined &&
         formValue.phoneNumber != undefined &&
-        formValue.insurance != undefined
+        formValue.insurance != undefined &&
+        formValue.password != undefined
       ) {
         const patientRequest: PatientRequest = {
           firstName: formValue.firstName,
@@ -74,6 +82,7 @@ export class CreatePatientComponent implements OnInit {
           email: formValue.email,
           phoneNumber: formValue.phoneNumber,
           insurance: this.convertToBolean(formValue.insurance),
+          password: formValue.password,
         };
         this._patientService.save(patientRequest).subscribe(() => {
           this._router.navigate(['patient-list']);
@@ -100,5 +109,9 @@ export class CreatePatientComponent implements OnInit {
 
   get insurance() {
     return this.createPatientForm.get('insurance');
+  }
+
+  get password() {
+    return this.createPatientForm.get('password');
   }
 }

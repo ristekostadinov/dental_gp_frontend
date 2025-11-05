@@ -5,18 +5,21 @@ import {
   GuardResult,
   MaybeAsync,
   Router,
-  RouterStateSnapshot
+  RouterStateSnapshot,
+  UrlTree,
 } from '@angular/router';
-import {CurrentUser} from '../components/domains/CurrentUser';
+import { CurrentUser } from '../components/domains/CurrentUser';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-
   constructor(private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
     const storedUser = localStorage.getItem('currentUser');
     if (storedUser) {
       try {
@@ -26,11 +29,17 @@ export class AuthGuard implements CanActivate {
         console.error('Invalid currentUser data', e);
       }
     }
-    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
-    return false;
+
+    // Return a UrlTree instead of navigating manually
+    return this.router.createUrlTree(['/login'], {
+      queryParams: { returnUrl: state.url },
+    });
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
     // just reuse the same logic
     return this.canActivate(childRoute, state);
   }
