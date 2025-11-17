@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { PatientRequest, IPatientForm } from '../domains/Patient';
+import { PatientRequest, IPatientForm } from '../../domains/Patient';
 import { PatientService } from '../../services/patient.service';
 import { Router } from '@angular/router';
 

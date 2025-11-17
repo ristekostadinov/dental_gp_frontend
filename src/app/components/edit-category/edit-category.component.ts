@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
-import { ICategoryForm } from '../domains/Category';
+import { ICategoryForm } from '../../domains/Category';
 
 @Component({
   selector: 'app-edit-category',

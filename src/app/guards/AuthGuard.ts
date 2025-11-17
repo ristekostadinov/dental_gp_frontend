@@ -8,7 +8,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { CurrentUser } from '../components/domains/CurrentUser';
+import { CurrentUser } from '../domains/CurrentUser';
 
 @Injectable({
   providedIn: 'root',

@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { PatientService } from '../../services/patient.service';
-import { IPatientForm, Patient, PatientRequest } from '../domains/Patient';
+import { IPatientForm, Patient, PatientRequest } from '../../domains/Patient';
 import { MatCardModule } from '@angular/material/card';
 @Component({
   selector: 'app-edit-patient',

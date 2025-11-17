@@ -5,10 +5,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { IResourceForm, ResourceRequest } from '../domains/Resource';
+import { IResourceForm, ResourceRequest } from '../../domains/Resource';
 import { Router } from '@angular/router';
 import { ResourceService } from '../../services/resource.service';
-import { Resource } from '../domains/Resource';
+import { Resource } from '../../domains/Resource';
 
 @Component({
   selector: 'app-edit-resource',

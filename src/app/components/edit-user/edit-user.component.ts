@@ -1,7 +1,7 @@
 import { Component, computed, Input, OnInit, Signal, signal } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { User, EditUserRequest } from '../domains/User';
-import { Role } from '../domains/Role';
+import { User, EditUserRequest } from '../../domains/User';
+import { Role } from '../../domains/Role';
 import { UserService } from '../../services/user.service';
 import { RoleService } from '../../services/role.service';
 import {

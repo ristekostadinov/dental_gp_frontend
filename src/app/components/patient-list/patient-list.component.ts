@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientDTO } from '../domains/Patient';
+import { PatientDTO } from '../../domains/Patient';
 import { PatientService } from '../../services/patient.service';
 import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';

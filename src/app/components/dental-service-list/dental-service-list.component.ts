@@ -4,7 +4,7 @@ import {
   MatPaginatorModule,
   PageEvent,
 } from '@angular/material/paginator';
-import { DentalServiceDTO } from '../domains/DentalService';
+import { DentalServiceDTO } from '../../domains/DentalService';
 import { DentalServiceManager } from '../../services/dental.service.manager';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';

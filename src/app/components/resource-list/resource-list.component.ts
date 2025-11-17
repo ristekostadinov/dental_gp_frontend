@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ResourceDTO } from '../domains/Resource';
+import { ResourceDTO } from '../../domains/Resource';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ResourceService } from '../../services/resource.service';
 import { FormsModule } from '@angular/forms';

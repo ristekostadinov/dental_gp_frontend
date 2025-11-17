@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LocationDTO } from '../components/domains/Location';
-import { PaginatedResponse } from '../components/domains/PaginatedResponse';
+import { LocationDTO } from '../domains/Location';
+import { PaginatedResponse } from '../domains/PaginatedResponse';
 import { Observable } from 'rxjs';
 import { environment } from '../../envinronments/environment';
 @Injectable({

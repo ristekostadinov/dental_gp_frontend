@@ -3,7 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table'
-import { UserDTO } from '../domains/User';
+import { UserDTO } from '../../domains/User';
 import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
