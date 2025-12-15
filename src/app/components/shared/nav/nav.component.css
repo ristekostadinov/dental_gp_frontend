@@ -4,7 +4,7 @@
 }
 
 .app-sidenav {
-  width: 260px;
+  width: 360px;
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.08);
   background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   color: rgba(0, 0, 0, 0.87);
@@ -71,7 +71,7 @@ mat-nav-list a.active-link {
 /* responsive tweak */
 @media (max-width: 599px) {
   .app-sidenav {
-    width: 220px;
+    width: 320px;
   }
 }
 /* ...existing code... */

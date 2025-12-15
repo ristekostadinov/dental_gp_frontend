@@ -1,26 +1,26 @@
 <div class="auth-page">
   <mat-card class="auth-card">
     <mat-card-header>
-      <mat-card-title>Sign in</mat-card-title>
-      <mat-card-subtitle>Enter your credentials</mat-card-subtitle>
+      <mat-card-title i18n>Sign in</mat-card-title>
+      <mat-card-subtitle i18n>Enter your credentials</mat-card-subtitle>
     </mat-card-header>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
+        <mat-label i18n>Email</mat-label>
         <input
           type="email"
           matInput
           formControlName="email"
-          placeholder="Ex. pat@example.com"
+          placeholder="Ex. pat@example.com" i18n-placeholder
         />
         @if (email?.hasError('email') && !email?.hasError('required')) {
-        <mat-error>Please enter a valid email address</mat-error>
+        <mat-error i18n>Please enter a valid email address</mat-error>
         } @if (email?.hasError('required')) {
-        <mat-error>Email is <strong>required</strong></mat-error>
+        <mat-error i18n>Email is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Password</mat-label>
+        <mat-label i18n>Password</mat-label>
         <input
           matInput
           formControlName="password"
@@ -30,17 +30,17 @@
           mat-icon-button
           matSuffix
           (click)="clickEvent($event)"
-          [attr.aria-label]="'Hide password'"
+          [attr.aria-label]="'Hide password'" i18n-aria-label
           [attr.aria-pressed]="hide()"
         >
           <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
 
         @if(password?.hasError('required')){
-        <mat-error>Password is <strong>required</strong></mat-error>
+        <mat-error i18n>Password is <strong>required</strong></mat-error>
         } @if(password?.hasError('minlength') &&
         !password?.hasError('required')){
-        <mat-error>Password have to be at least 8 characters</mat-error>
+        <mat-error i18n>Password have to be at least 8 characters</mat-error>
         }
       </mat-form-field>
       <div class="auth-buttons">
@@ -51,7 +51,7 @@
           class="w-75"
           [disabled]="!loginForm.valid"
         >
-          Login
+          <span i18n>Login</span>
         </button>
 
         <button
@@ -61,7 +61,7 @@
           type="submit"
           class="w-75"
         >
-          Create Account
+          <span i18n>Create Account</span>
         </button>
       </div>
     </form>

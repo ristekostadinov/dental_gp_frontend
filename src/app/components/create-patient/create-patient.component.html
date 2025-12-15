@@ -1,22 +1,22 @@
 <div class="container">
-  <h2>Insert Patient</h2>
+  <h2 i18n>Insert Patient</h2>
   <form [formGroup]="createPatientForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <mat-label>Frist Name: </mat-label>
+      <mat-label i18n>Frist Name: </mat-label>
       <input matInput type="text" formControlName="firstName" />
       @if(firstName?.hasError('required')){
-      <mat-error>First name is <strong>required</strong></mat-error>
+      <mat-error i18n>First name is <strong>required</strong></mat-error>
       }
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Last name: </mat-label>
+      <mat-label i18n>Last name: </mat-label>
       <input matInput type="text" formControlName="lastName" />
       @if(lastName?.hasError('required')){
-      <mat-error>Last name is <strong>required</strong></mat-error>
+      <mat-error i18n>Last name is <strong>required</strong></mat-error>
       }
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
+      <mat-label i18n>Email</mat-label>
       <input
         type="email"
         matInput
@@ -25,14 +25,14 @@
       />
       <mat-hint>Errors appear instantly!</mat-hint>
       @if (email?.hasError('email') && !email?.hasError('required')) {
-      <mat-error>Please enter a valid email address</mat-error>
+      <mat-error i18n>Please enter a valid email address</mat-error>
       } @if (email?.hasError('required')) {
-      <mat-error>Email is <strong>required</strong></mat-error>
+      <mat-error i18n>Email is <strong>required</strong></mat-error>
       }
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Phone number: </mat-label>
+      <mat-label i18n>Phone number: </mat-label>
       <input
         matInput
         type="text"
@@ -40,26 +40,26 @@
         placeholder="Ex. (00)-000-000 or 000-000"
       />
       @if(phoneNumber?.hasError('required')){
-      <mat-error>Phone number is <strong>required</strong></mat-error>
+      <mat-error i18n>Phone number is <strong>required</strong></mat-error>
       } @if(phoneNumber?.hasError('pattern')){
-      <mat-error>Phone number format <strong> is incorrect</strong></mat-error>
+      <mat-error i18n>Phone number format <strong> is incorrect</strong></mat-error>
       }
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Insurance: </mat-label>
+      <mat-label i18n>Medical Insurance: </mat-label>
       <mat-select formControlName="insurance">
         @for(insurance of patientInsurance; track insurance){
         <mat-option value="{{ insurance }}">{{ insurance }}</mat-option>
         }
       </mat-select>
       @if(insurance?.hasError('required')){
-      <mat-error>Insurance is <strong>required</strong></mat-error>
+      <mat-error i18n>Insurance is <strong>required</strong></mat-error>
       }
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Enter your password</mat-label>
+      <mat-label i18n>Enter your password</mat-label>
       <input
         matInput
         formControlName="password"
@@ -75,9 +75,9 @@
         <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
       @if(password?.hasError('required')){
-      <mat-error>Password is <strong>required</strong></mat-error>
+      <mat-error i18n>Password is <strong>required</strong></mat-error>
       } @if(password?.hasError('minlength') && !password?.hasError('required')){
-      <mat-error>Password have to be at least 8 characters</mat-error>
+      <mat-error i18n>Password have to be at least 8 characters</mat-error>
       }
     </mat-form-field>
 

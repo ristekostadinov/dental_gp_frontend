@@ -1,28 +1,26 @@
 <div class="container">
-    <h2>Insert Dental Service</h2>
-    <form [formGroup]="createDentalServiceForm" (ngSubmit)="onSubmit()">
-      <mat-form-field>
-        <mat-label>Service Name: </mat-label>
-        <input matInput type="text" formControlName="name" />
-        @if(name?.hasError('required')){
-        <mat-error>Service name is <strong>required</strong></mat-error>
-        }
-      </mat-form-field>
-  <div class="row  justify-content-center">
+  <h2 i18n>Insert Dental Service</h2>
+  <form [formGroup]="createDentalServiceForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label i18n>Service Name: </mat-label>
+      <input matInput type="text" formControlName="name" />
+      @if(name?.hasError('required')){
+      <mat-error i18n>Service name is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+    <div class="row justify-content-center">
       <div class="col">
-          <button
+        <button
           mat-raised-button
           color="primary"
           type="submit"
           class="w-75"
           [disabled]="!createDentalServiceForm.valid"
+          i18n
         >
           Save Service
         </button>
       </div>
-  
-  </div>
-  
-    </form>
-  </div>
-  
+    </div>
+  </form>
+</div>
