@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../envinronments/environment';
-import { PatientDTO, Patient, PatientRequest } from '../components/domains/Patient';
+import { PatientDTO, Patient, PatientRequest } from '../domains/Patient';
 
 @Injectable({
   providedIn: 'root'

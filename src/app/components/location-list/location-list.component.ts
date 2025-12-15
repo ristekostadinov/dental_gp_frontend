@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { RouterLink } from '@angular/router';
-import { LocationDTO } from '../domains/Location';
+import { LocationDTO } from '../../domains/Location';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -47,4 +47,11 @@ export class LocationListComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.loadLoadLocations();
   }
+
+  deleteLocation(id: string) {
+    // this._locationService.deleteById(id).subscribe(() => {
+    //   this.loadLoadLocations();
+    // });
+  }
+
 }

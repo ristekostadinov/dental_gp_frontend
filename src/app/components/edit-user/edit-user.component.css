@@ -1,0 +1,15 @@
+mat-form-field{
+    display: inline;
+}
+
+.button-group{
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    margin:20px;
+}
+
+.button-group button{
+    max-width: 350px;
+}

@@ -1,33 +1,84 @@
-<mat-sidenav-container primary class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+<!-- ...existing code... -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="app-sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar class="sidenav-toolbar" color="primary">
+      <div class="sidenav-user">
+        <mat-icon class="user-avatar" aria-hidden="true"
+          >account_circle</mat-icon
+        >
+        @if(currentUser != null) {
+        <div class="user-info">
+          <div class="user-name">
+            {{ "Username: " + currentUser?.username || "User" }}
+          </div>
+          <div class="user-role">
+            {{
+              "Roles: " +
+                (currentUser?.roles?.length ? "" : "No roles assigned")
+            }}
+            @if(currentUser?.roles) { @for(role of currentUser.roles; track
+            role) {
+            {{ role.name }}
+            } }
+          </div>
+        </div>
+        }
+      </div>
+    </mat-toolbar>
+
     <mat-nav-list>
-      <a mat-list-item routerLink="/home">Home</a>
-      <a mat-list-item routerLink="/admin-panel">Admin Panel</a>
-      <a mat-list-item routerLink="/patient-list">Patients</a>
-      <a mat-list-item routerLink="/category-list">Categories</a>
-      <a mat-list-item routerLink="/dental-service-list">Dental Services</a>
-      <a mat-list-item routerLink="/resource-list">Resources</a>
-      <a mat-list-item routerLink="/location-list">Locations</a>
+      @for(page of pages; track page) {
+      <a
+        mat-list-item
+        routerLink="{{ page.route }}"
+        routerLinkActive="active-link"
+        routerLinkActiveOptions="{ exact: true }"
+      >
+        @if(page.name == 'patients_list'){
+        <mat-icon matListIcon svgIcon="patient_list"></mat-icon>
+        <span matLine>{{ page.name }}</span>
+        } @else {
+        <mat-icon matListIcon>{{ page.icon || "chevron_right" }}</mat-icon>
+        <span matLine>{{ page.name }}</span>
+        }
+      </a>
+      }
+
+      <mat-divider></mat-divider>
+
+      <a mat-list-item (click)="logout(); drawer.toggle()" aria-label="Logout">
+        <mat-icon matListIcon>exit_to_app</mat-icon>
+        <span matLine>Logout</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      @if (isHandset$ | async) {
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
+    <mat-toolbar color="primary" class="main-toolbar">
+      @if(isHandset$ | async) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
       }
-      <span>dental_gp_frontend</span>
+
+      <span class="app-title">Admin Application</span>
+
+      <span class="spacer"></span>
     </mat-toolbar>
-    <!-- Add Content Here -->
-     <router-outlet></router-outlet>
+
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<!-- ...existing code... -->

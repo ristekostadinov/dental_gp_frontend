@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IResourceForm, ResourceRequest } from '../domains/Resource';
+import { IResourceForm, ResourceRequest } from '../../domains/Resource';
 import {
   FormBuilder,
   FormGroup,

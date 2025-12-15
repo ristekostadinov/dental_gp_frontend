@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { CategoryService } from '../../services/category.service';
-import { CategoryDTO } from '../domains/Category';
+import { CategoryDTO } from '../../domains/Category';
 import { RouterLink } from '@angular/router';
 
 @Component({

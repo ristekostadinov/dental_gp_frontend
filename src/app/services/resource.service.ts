@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ResourceDTO, ResourceRequest, Resource } from '../components/domains/Resource';
+import { ResourceDTO, ResourceRequest, Resource } from '../domains/Resource';
 import { environment } from '../../envinronments/environment';
-import { PaginatedResponse } from '../components/domains/PaginatedResponse';
+import { PaginatedResponse } from '../domains/PaginatedResponse';
 import { Observable } from 'rxjs';
 
 @Injectable({

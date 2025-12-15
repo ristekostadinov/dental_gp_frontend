@@ -1,5 +1,5 @@
 import {HttpErrorResponse, HttpInterceptorFn} from '@angular/common/http';
-import {CurrentUser} from '../components/domains/CurrentUser';
+import {CurrentUser} from '../domains/CurrentUser';
 import { inject } from '@angular/core';
 import {Router} from '@angular/router';
 import {catchError, throwError} from 'rxjs';

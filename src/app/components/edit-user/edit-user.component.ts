@@ -1,7 +1,7 @@
 import { Component, computed, Input, OnInit, Signal, signal } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { User, EditUserRequest } from '../domains/User';
-import { Role } from '../domains/Role';
+import { User, EditUserRequest } from '../../domains/User';
+import { Role } from '../../domains/Role';
 import { UserService } from '../../services/user.service';
 import { RoleService } from '../../services/role.service';
 import {
@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { forkJoin } from 'rxjs';
 import { Router} from '@angular/router';
+import { MatCard } from "@angular/material/card";
 
 interface IEditUserForm{
   firstName: FormControl<string>;
@@ -48,7 +49,8 @@ interface IEditRoles{
     MatCheckboxModule,
     NgFor,
     NgIf,
-  ],
+    MatCard
+],
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.css',
 })

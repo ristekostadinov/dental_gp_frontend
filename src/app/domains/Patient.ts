@@ -7,6 +7,7 @@ export interface Patient{
     email: string; 
     phoneNumber: string;
     insurance:boolean;
+    password: string;
 }
 
 export interface PatientDTO{
@@ -22,6 +23,7 @@ export interface PatientRequest{
     email: string; 
     phoneNumber: string;
     insurance?: boolean;
+    password: string;
 }
 
 export interface IPatientForm{
@@ -30,4 +32,5 @@ export interface IPatientForm{
   email: FormControl<string>;
   phoneNumber: FormControl<string>;
   insurance: FormControl<string>;
+  password: FormControl<string>;
 }

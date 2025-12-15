@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { DentalService, DentalServiceDTO, DentalServiceRequest } from "../components/domains/DentalService";
+import { DentalService, DentalServiceDTO, DentalServiceRequest } from "../domains/DentalService";
 import { Observable } from "rxjs";
 import { environment } from "../../envinronments/environment";
-import { PaginatedResponse } from "../components/domains/PaginatedResponse";
+import { PaginatedResponse } from "../domains/PaginatedResponse";
 
 @Injectable({
   providedIn: 'root'

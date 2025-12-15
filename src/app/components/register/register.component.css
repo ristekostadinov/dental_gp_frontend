@@ -5,3 +5,33 @@ form{
 mat-form-field{
   display: inline;
 }
+
+.auth-page{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:70vh;
+    padding:24px;
+  }
+
+  .auth-card{
+    width: 100%; 
+    max-width: 420px;
+    padding:24px;
+  }
+ .button-group{
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+ } 
+
+ .button-group a:link{
+  text-decoration: none;
+ }
+
+ :host{
+   display: block;
+  height: 100vh;        /* ensures the background fills the screen */
+  background-color: lightblue; /* or blue if you want that */
+ }

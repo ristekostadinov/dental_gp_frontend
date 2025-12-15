@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { DentalServiceManager } from '../../services/dental.service.manager';
 import { Router } from '@angular/router';
-import { IDentalServiceForm } from '../domains/DentalService';
+import { IDentalServiceForm } from '../../domains/DentalService';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';

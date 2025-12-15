@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category, CategoryDTO, CategoryRequest } from '../components/domains/Category';
+import { Category, CategoryDTO, CategoryRequest } from '../domains/Category';
 import { Observable } from 'rxjs';
 import { environment } from '../../envinronments/environment';
-import { PaginatedResponse } from '../components/domains/PaginatedResponse';
+import { PaginatedResponse } from '../domains/PaginatedResponse';
 
 @Injectable({
   providedIn: 'root'
