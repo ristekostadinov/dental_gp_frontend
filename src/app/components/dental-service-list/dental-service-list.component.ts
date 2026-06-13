@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   MatPaginator,
   MatPaginatorModule,
@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
   ],
   templateUrl: './dental-service-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './dental-service-list.component.css',
 })
 export class DentalServiceListComponent implements OnInit {

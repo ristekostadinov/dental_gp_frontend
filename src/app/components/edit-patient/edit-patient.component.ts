@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, signal } from '@angular/core';
+import { Component, Input, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -29,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule,
   ],
   templateUrl: './edit-patient.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './edit-patient.component.css',
 })
 export class EditPatientComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, computed, Input, OnInit, Signal, signal } from '@angular/core';
+import { Component, computed, Input, OnInit, Signal, signal, ChangeDetectionStrategy } from '@angular/core';
 
 import { User, EditUserRequest } from '../../domains/User';
 import { Role } from '../../domains/Role';
@@ -50,6 +50,7 @@ interface IEditRoles{
     MatCard
 ],
   templateUrl: './edit-user.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './edit-user.component.css',
 })
 export class EditUserComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   selector: 'app-appointment-calendar',
   imports: [],
   templateUrl: './appointment-calendar.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './appointment-calendar.component.css'
 })
 export class AppointmentCalendarComponent {

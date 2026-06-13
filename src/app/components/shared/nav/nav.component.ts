@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
@@ -21,6 +21,7 @@ interface Page {
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatToolbarModule,
     MatButtonModule,

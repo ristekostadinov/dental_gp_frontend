@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -20,6 +20,7 @@ import { RouterLink } from '@angular/router';
     FormsModule
   ],
   templateUrl: './categories-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './categories-list.component.css'
 })
 export class CategoriesListComponent implements OnInit {

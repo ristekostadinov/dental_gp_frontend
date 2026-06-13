@@ -1,4 +1,4 @@
-import { Component, OnInit, Signal } from '@angular/core';
+import { Component, OnInit, Signal, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
@@ -14,6 +14,7 @@ import { RouterLink, Router } from '@angular/router';
   selector: 'app-admin',
   imports: [MatCardModule, MatInputModule, MatListModule, MatTableModule, MatButtonModule, RouterLink],
   templateUrl: './admin.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit{

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ResourceDTO } from '../../domains/Resource';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { ResourceService } from '../../services/resource.service';
@@ -19,6 +19,7 @@ import { Router, RouterLink } from '@angular/router';
     RouterLink
   ],
   templateUrl: './resource-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './resource-list.component.css'
 })
 export class ResourceListComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormsModule,
@@ -30,6 +30,7 @@ import { Router } from '@angular/router';
     MatSelectModule,
   ],
   templateUrl: './create-patient.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './create-patient.component.css',
 })
 export class CreatePatientComponent implements OnInit {

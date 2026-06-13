@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
   ],
   templateUrl: './edit-dental-service.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './edit-dental-service.component.css',
 })
 export class EditDentalServiceComponent implements OnInit {

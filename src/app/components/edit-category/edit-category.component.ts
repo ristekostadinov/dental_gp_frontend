@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,6 +19,7 @@ import { ICategoryForm } from '../../domains/Category';
     ReactiveFormsModule,
   ],
   templateUrl: './edit-category.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './edit-category.component.css'
 })
 export class EditCategoryComponent implements OnInit{

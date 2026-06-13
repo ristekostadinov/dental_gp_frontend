@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { RouterLink } from '@angular/router';
 import { LocationDTO } from '../../domains/Location';
@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
   ],
   templateUrl: './location-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './location-list.component.css',
 })
 export class LocationListComponent implements OnInit {
