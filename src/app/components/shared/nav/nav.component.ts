@@ -47,12 +47,12 @@ export class NavComponent implements OnInit {
     
   }
   private breakpointObserver = inject(BreakpointObserver);
-  pages: Page[] =  [
-    { name: 'Manage Users', route: '/admin-panel', icon: 'admin_panel_settings' },
-    { name: 'Patients', route: '/patient-list', icon: 'person' },
-    { name: 'Services', route: '/dental-service-list', icon: 'medical_services' },
-    { name: 'Locations', route: '/location-list', icon: 'place' },
-    { name: 'Dental Providers', route: '/resource-list', icon: 'group' },
+  pages: Page[] = [
+    { name: $localize`Manage Users`, route: '/admin-panel', icon: 'admin_panel_settings' },
+    { name: $localize`Patients`, route: '/patient-list', icon: 'person' },
+    { name: $localize`Services`, route: '/dental-service-list', icon: 'medical_services' },
+    { name: $localize`Locations`, route: '/location-list', icon: 'place' },
+    { name: $localize`Dental Providers`, route: '/resource-list', icon: 'group' },
   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver

@@ -1,11 +1,11 @@
 <div class="container">
-  <h2>Edit Category</h2>
+  <h2 i18n>Edit Category</h2>
   <form [formGroup]="editCategoryForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
-      <mat-label>Category Name: </mat-label>
+      <mat-label i18n>Category Name: </mat-label>
       <input matInput type="text" formControlName="name" />
       @if(name?.hasError('required')){
-      <mat-error>Category name is <strong>required</strong></mat-error>
+      <mat-error i18n>Category name is <strong>required</strong></mat-error>
       }
     </mat-form-field>
     <div class="row justify-content-center">
@@ -17,7 +17,7 @@
           class="w-75"
           [disabled]="!editCategoryForm.valid"
         >
-          Save Category
+          <span i18n>Save Category</span>
         </button>
       </div>
     </div>

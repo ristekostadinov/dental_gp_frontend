@@ -1,11 +1,11 @@
 <div class="container">
-    <h2>Edit Dental Service</h2>
+    <h2 i18n>Edit Dental Service</h2>
     <form [formGroup]="editDentalServiceForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
-        <mat-label>Service Name: </mat-label>
+        <mat-label i18n>Service Name: </mat-label>
         <input matInput type="text" formControlName="name" />
         @if(name?.hasError('required')){
-        <mat-error>Service name is <strong>required</strong></mat-error>
+        <mat-error i18n>Service name is <strong>required</strong></mat-error>
         }
       </mat-form-field>
   <div class="row  justify-content-center">
@@ -17,7 +17,7 @@
           class="w-75"
           [disabled]="!editDentalServiceForm.valid"
         >
-          Save Service
+          <span i18n>Save Service</span>
         </button>
       </div>
   

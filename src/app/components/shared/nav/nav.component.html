@@ -16,16 +16,16 @@
         @if(currentUser != null) {
         <div class="user-info">
           <div class="user-name">
-            {{ "Username: " + currentUser?.username || "User" }}
+            <span i18n>Username:</span> {{ currentUser?.username || "User" }}
           </div>
           <div class="user-role">
-            {{
-              "Roles: " +
-                (currentUser?.roles?.length ? "" : "No roles assigned")
-            }}
-            @if(currentUser?.roles) { @for(role of currentUser.roles; track
-            role) {
-            {{ role.name }}
+            <span i18n>Roles:</span>
+            @if((currentUser?.roles?.length) === 0) {
+              <span i18n>No roles assigned</span>
+             }
+            
+            @if(currentUser?.roles) { @for(role of currentUser.roles; track role) {
+            {{ role.name  }},
             } }
           </div>
         </div>
@@ -55,7 +55,7 @@
 
       <a mat-list-item (click)="logout(); drawer.toggle()" aria-label="Logout">
         <mat-icon matListIcon>exit_to_app</mat-icon>
-        <span matLine>Logout</span>
+        <span matLine i18n>Logout</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
@@ -73,7 +73,7 @@
       </button>
       }
 
-      <span class="app-title">Admin Application</span>
+      <span class="app-title" i18n>Admin Application</span>
 
       <span class="spacer"></span>
     </mat-toolbar>

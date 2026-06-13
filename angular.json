@@ -9,6 +9,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "mk": "src/assets/i18n/messages.mk.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -16,9 +22,7 @@
             "outputPath": "dist/dental_gp_frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js", "@angular/localize/init"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/assets",
@@ -33,9 +37,7 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -57,6 +59,9 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "mk": {
+              "localize": ["mk"]
             }
           },
           "defaultConfiguration": "production"
@@ -69,6 +74,9 @@
             },
             "development": {
               "buildTarget": "dental_gp_frontend:build:development"
+            },
+            "mk": {
+              "buildTarget": "dental_gp_frontend:build:mk"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +89,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
@@ -92,9 +101,7 @@
                 "output": "/"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }

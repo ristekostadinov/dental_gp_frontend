@@ -1,47 +1,47 @@
 <div class="auth-page">
   <mat-card class="auth-card">
     <mat-card-header>
-      <mat-card-title>Create account</mat-card-title>
+      <mat-card-title i18n>Create account</mat-card-title>
     </mat-card-header>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
-        <mat-label>Frist Name: </mat-label>
+        <mat-label i18n>Frist Name: </mat-label>
         <input matInput type="text" formControlName="firstName" />
         @if(firstName?.hasError('required')){
-        <mat-error>First name is <strong>required</strong></mat-error>
+        <mat-error i18n>First name is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Last name: </mat-label>
+        <mat-label i18n>Last name: </mat-label>
         <input matInput type="text" formControlName="lastName" />
         @if(lastName?.hasError('required')){
-        <mat-error>Last name is <strong>required</strong></mat-error>
+        <mat-error i18n>Last name is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Username: </mat-label>
+        <mat-label i18n>Username: </mat-label>
         <input matInput type="text" formControlName="username" />
         @if(username?.hasError('required')){
-        <mat-error>Username is <strong>required</strong></mat-error>
+        <mat-error i18n>Username is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
+        <mat-label i18n>Email</mat-label>
         <input
           type="email"
           matInput
           formControlName="email"
-          placeholder="Ex. pat@example.com"
+          placeholder="Ex. pat@example.com" i18n-placeholder
         />
-        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-hint i18n>Errors appear instantly!</mat-hint>
         @if (email?.hasError('email') && !email?.hasError('required')) {
-        <mat-error>Please enter a valid email address</mat-error>
+        <mat-error i18n>Please enter a valid email address</mat-error>
         } @if (email?.hasError('required')) {
-        <mat-error>Email is <strong>required</strong></mat-error>
+        <mat-error i18n>Email is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Enter your password</mat-label>
+        <mat-label i18n>Enter your password</mat-label>
         <input
           matInput
           formControlName="password"
@@ -51,16 +51,16 @@
           mat-icon-button
           matSuffix
           (click)="clickEvent($event)"
-          [attr.aria-label]="'Hide password'"
+          [attr.aria-label]="'Hide password'" i18n
           [attr.aria-pressed]="hide()"
         >
           <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
         @if(password?.hasError('required')){
-        <mat-error>Password is <strong>required</strong></mat-error>
+        <mat-error i18n>Password is <strong>required</strong></mat-error>
         } @if(password?.hasError('minlength') &&
         !password?.hasError('required')){
-        <mat-error>Password have to be at least 8 characters</mat-error>
+        <mat-error i18n>Password have to be at least 8 characters</mat-error>
         }
       </mat-form-field>
       <div class="button-group">
@@ -71,10 +71,10 @@
           class="w-75"
           [disabled]="!signupForm.valid"
         >
-          Sign Up
+          <span i18n>Sign Up</span>
         </button>
         <br />
-        <p>Already have an account? <a routerLink="/login">Login</a></p>
+        <p i18n>Already have an account? <a routerLink="/login" ><span >Login</span></a></p>
       </div>
     </form>
   </mat-card>
