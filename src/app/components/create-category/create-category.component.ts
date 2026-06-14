@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
       MatSelectModule
     ],
   templateUrl: './create-category.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './create-category.component.css'
 })
 export class CreateCategoryComponent implements OnInit {

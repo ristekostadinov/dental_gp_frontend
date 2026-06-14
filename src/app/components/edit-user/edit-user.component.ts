@@ -1,5 +1,5 @@
-import { Component, computed, Input, OnInit, Signal, signal } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { Component, computed, Input, OnInit, Signal, signal, ChangeDetectionStrategy } from '@angular/core';
+
 import { User, EditUserRequest } from '../../domains/User';
 import { Role } from '../../domains/Role';
 import { UserService } from '../../services/user.service';
@@ -47,11 +47,10 @@ interface IEditRoles{
     FormsModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    NgFor,
-    NgIf,
     MatCard
 ],
   templateUrl: './edit-user.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './edit-user.component.css',
 })
 export class EditUserComponent implements OnInit {

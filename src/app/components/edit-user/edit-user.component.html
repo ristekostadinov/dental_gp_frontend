@@ -6,21 +6,21 @@
         <mat-label i18n>Frist Name: </mat-label>
         <input matInput type="text" formControlName="firstName" />
         @if(firstName?.hasError('required')){
-        <mat-error i18n>First name is <strong>required</strong></mat-error>
+          <mat-error i18n>First name is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
         <mat-label i18n>Last name: </mat-label>
         <input matInput type="text" formControlName="lastName" />
         @if(lastName?.hasError('required')){
-        <mat-error i18n>Last name is <strong>required</strong></mat-error>
+          <mat-error i18n>Last name is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
         <mat-label i18n>Username: </mat-label>
         <input matInput type="text" formControlName="username" />
         @if(username?.hasError('required')){
-        <mat-error i18n>Username is <strong>required</strong></mat-error>
+          <mat-error i18n>Username is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field class="example-full-width">
@@ -30,12 +30,12 @@
           matInput
           formControlName="email"
           placeholder="Ex. pat@example.com" i18n-placeholder
-        />
+          />
         <mat-hint i18n>Errors appear instantly!</mat-hint>
         @if (email?.hasError('email') && !email?.hasError('required')) {
-        <mat-error i18n>Please enter a valid email address</mat-error>
-        } @if (email?.hasError('required')) {
-        <mat-error i18n>Email is <strong>required</strong></mat-error>
+          <mat-error i18n>Please enter a valid email address</mat-error>
+          } @if (email?.hasError('required')) {
+          <mat-error i18n>Email is <strong>required</strong></mat-error>
         }
       </mat-form-field>
       <mat-form-field>
@@ -44,40 +44,44 @@
           matInput
           formControlName="password"
           [type]="hide() ? 'password' : 'text'"
-        />
+          />
         <button
           mat-icon-button
           matSuffix
           (click)="clickEvent($event)"
           [attr.aria-label]="'Hide password'" i18n-aria-label
           [attr.aria-pressed]="hide()"
-        >
+          >
           <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
         @if(password?.hasError('required')){
-        <mat-error i18n>Password is <strong>required</strong></mat-error>
-        } @if(password?.hasError('minlength') &&
-        !password?.hasError('required')){
-        <mat-error i18n>Password have to be at least 8 characters</mat-error>
+          <mat-error i18n>Password is <strong>required</strong></mat-error>
+          } @if(password?.hasError('minlength') &&
+          !password?.hasError('required')){
+          <mat-error i18n>Password have to be at least 8 characters</mat-error>
         }
       </mat-form-field>
 
       <section>
         <div [formGroup]="rolesGroup">
-          <div *ngIf="userRoles && userRoles.length" formArrayName="roles">
-            <mat-label i18n>Roles:</mat-label>
-            <div *ngFor="let role of roles.controls; index as i">
-              <mat-checkbox
-                [checked]="isChecked(role)"
-                type="checkbox"
-                name="role"
-                [formControlName]="i"
-                [value]="getRoleName(i)"
-              >
-                {{ getRoleName(i) }}
-              </mat-checkbox>
+          @if (userRoles && userRoles.length) {
+            <div formArrayName="roles">
+              <mat-label i18n>Roles:</mat-label>
+              @for (role of roles.controls; track role; let i = $index) {
+                <div>
+                  <mat-checkbox
+                    [checked]="isChecked(role)"
+                    type="checkbox"
+                    name="role"
+                    [formControlName]="i"
+                    [value]="getRoleName(i)"
+                    >
+                    {{ getRoleName(i) }}
+                  </mat-checkbox>
+                </div>
+              }
             </div>
-          </div>
+          }
         </div>
       </section>
       <div class="button-group">
@@ -87,7 +91,7 @@
           type="submit"
           class="w-75"
           [disabled]="!editUserForm.valid"
-        >
+          >
           <span i18n>Save</span>
         </button>
       </div>

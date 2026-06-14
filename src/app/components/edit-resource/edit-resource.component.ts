@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,6 +23,7 @@ import { Resource } from '../../domains/Resource';
         MatSelectModule,
   ],
   templateUrl: './edit-resource.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './edit-resource.component.css'
 })
 export class EditResourceComponent implements OnInit {

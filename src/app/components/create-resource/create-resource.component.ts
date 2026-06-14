@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { IResourceForm, ResourceRequest } from '../../domains/Resource';
 import {
   FormBuilder,
@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
   ],
   templateUrl: './create-resource.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './create-resource.component.css',
 })
 export class CreateResourceComponent implements OnInit {

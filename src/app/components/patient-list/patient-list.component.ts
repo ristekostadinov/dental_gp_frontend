@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { PatientDTO } from '../../domains/Patient';
 import { PatientService } from '../../services/patient.service';
 import { Router, RouterLink } from '@angular/router';
@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-patient-list',
   imports: [RouterLink, MatCardModule, MatTableModule, MatButtonModule, MatListModule, MatInputModule, MatIconModule],
   templateUrl: './patient-list.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './patient-list.component.css'
 })
 export class PatientListComponent implements OnInit{
